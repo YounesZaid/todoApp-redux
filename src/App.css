@@ -22,6 +22,42 @@
   font-size: large;
 }
 
+.App .todo-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.App .todo-container input {
+  margin-right: 10px;
+  height: 3em;
+}
+
+.App .todo-container button {
+  border: 1px solid #7a83b1;
+  background: #7a83b1;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.App .todo-container button:hover {
+  background: #8c93b8;
+}
+
+.App .todo-container ul {
+  list-style: none;
+  padding: 0;
+  margin-left: -10em;
+}
+
+.App .todo-container ul li {
+  padding: 5px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
