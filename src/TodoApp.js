@@ -7,8 +7,9 @@ class TodoApp extends Component {
     todoTitle: ''
   }
   render() {
-    const { todos, store } = this.props;
+    const { todos, visibilityFilter, store } = this.props;
     const { todoTitle } = this.state;
+    const visibleTodos = getVisibleTodos(todos, visibilityFilter);
     return(
       <div className="todo-container">
         <div>
@@ -31,7 +32,7 @@ class TodoApp extends Component {
           </button>
         </div>
         <ul>
-          {todos.map(todo => 
+          {visibleTodos.map(todo => 
             <li key={todo.id} onClick={() => {
               store.dispatch({
                 type: "TOGGLE_TODO",
@@ -43,8 +44,50 @@ class TodoApp extends Component {
             </li>
           )}
         </ul>
+        <div className="footer-links">
+          <FilterLink filter="SHOW_ALL" store={store}>
+            All
+          </FilterLink>
+          {' '}
+          <FilterLink filter="SHOW_ACTIVE" store={store}>
+            Active
+          </FilterLink>
+          {' '}
+          <FilterLink filter="SHOW_COMPLETED" store={store}>
+            Completed
+          </FilterLink>
+        </div>
       </div>
     )
+  }
+}
+
+const FilterLink = ({ store, filter, children }) => {
+  return(
+    <a href="#" onClick={e => {
+      e.preventDefault();
+      store.dispatch({
+        type: "SET_VISIBILITY_FILTER",
+        filter
+      })
+    }}>
+      {children}
+    </a>
+  )
+}
+
+const getVisibleTodos = (todos, filter) => {
+  switch(filter) {
+    case "SHOW_ALL":
+      return todos;
+    case "SHOW_COMPLETED":
+      return todos.filter(
+        t => t.completed
+      );
+    case "SHOW_ACTIVE":
+      return todos.filter(
+        t => !t.completed
+      );
   }
 }
 

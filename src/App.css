@@ -67,6 +67,20 @@
   border-radius: 3px;
 }
 
+.App .todo-container .footer-links a {
+  /* width: 30em; */
+  margin-right: 3px;
+  padding: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.App .todo-container .footer-links a:hover {
+  background: #8c93b8;
+  border-radius: 3px;
+  color: white;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
