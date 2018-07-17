@@ -49,13 +49,22 @@
 }
 
 .App .todo-container ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   list-style: none;
   padding: 0;
-  margin-left: -10em;
+  margin: 1em 33em;
 }
 
 .App .todo-container ul li {
-  padding: 5px;
+  padding: 9px;
+  cursor: pointer;
+  width: 95%;
+  background: #7983b1;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 3px;
 }
 
 @keyframes App-logo-spin {
